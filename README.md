@@ -1,6 +1,6 @@
 # JWT-POC
 
-To JWT είναι ένα encoded token που γίνεται issue από τον server κατά το login ενός client και στη συνέχεια συνοδεύει τα αιτήματα του client ως http header για να παρέχει authentication και authorization. Κάθε JWT αποτελείται από 3 μέρη τα οποία κρυπτογραφούνται με Base64Url και χωρίζονται με τον χαρακτήρα '.' για εύκολο distinction. Το 1ο μέρος, το JWT header, αναγράφει τον αλγόριθμο κρυπτογράφησης και το είδος του token. Το 2ο μέρος, το payload, περιγράφει σε JSON format τα claims που έχει η επικοινωνία, είτε αφορούν τον client είτε άλλες πληροφορίες. Υπάρχουν κάποια predefined claims που χρησιμοποιούνται και υποτηρίζονται από libraries (βλέπε εδώ) αλλά μπορούν αν οριστούν και οποιαδήποτε άλλα claims θέλουμε. Το 3ο μέρος, η υπογραφή, σχηματίζεται από την ακόλουθη μέθοδο: algorithm_specified_on_header(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret_key). Οταν ο server λαβαίνει ένα νέο request κάνει decode το jwt και verify για να το συγκρίνει με την υπογραφή ώστε να βεβαιωθεί ότι δεν έχει αλλοιωθεί το payload.
+To JWT είναι ένα encoded token που γίνεται issue από τον server κατά το login ενός client και στη συνέχεια συνοδεύει τα αιτήματα του client ως http header για να παρέχει authentication και authorization. Κάθε JWT αποτελείται από 3 μέρη τα οποία κρυπτογραφούνται με Base64Url και χωρίζονται με τον χαρακτήρα '.' για εύκολο distinction. Το 1ο μέρος, το JWT header, αναγράφει τον αλγόριθμο κρυπτογράφησης και το είδος του token. Το 2ο μέρος, το payload, περιγράφει σε JSON format τα claims που έχει η επικοινωνία, είτε αφορούν τον client είτε άλλες πληροφορίες. Υπάρχουν κάποια predefined claims που χρησιμοποιούνται και υποτηρίζονται από libraries (βλέπε https://datatracker.ietf.org/doc/html/rfc7519#section-4.1) αλλά μπορούν αν οριστούν και οποιαδήποτε άλλα claims θέλουμε. Το 3ο μέρος, η υπογραφή, σχηματίζεται από την ακόλουθη μέθοδο: algorithm_specified_on_header(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret_key). Οταν ο server λαβαίνει ένα νέο request κάνει decode το jwt και verify για να το συγκρίνει με την υπογραφή ώστε να βεβαιωθεί ότι δεν έχει αλλοιωθεί το payload.
 
 ## Πλεονεκτήματα JWT:
 λόγω του ότι ακολουθεί JSON format, είναι compact και δίνει μεγάλη ευκολία στην διαχείρηση καθώς το JSON κάνει map απευθείας σε object και υποστηρίζεται απο τι περισσότερες γλώσσες.
@@ -12,10 +12,10 @@ To JWT είναι ένα encoded token που γίνεται issue από τον
 ## Μειονεκτηματα JWT:
 Non-revocable. δεν μπορείς να ακυρώσεις ένα token πριν γίνει expire σε περίπτωση που θες να κάεις άμεσα ban κάποιον χρήστη.
 Βασίζεται στην μυστικότητα του κλειδιού. Αν το secret γίνει compromise τότε καταρρέει.
-Για JWT security issues βλέπε εδώ
+Για JWT security issues βλέπε [εδώ](https://portswigger.net/web-security/jwt)
 
 ##JWT & .NET:
-υπάρχουν πολλές βιβλιοθήκες που υποστηρίζουν την χρήση JWT σε .NET (βλέπε εδώ)
+υπάρχουν πολλές βιβλιοθήκες που υποστηρίζουν την χρήση JWT σε .NET (https://jwt.io/libraries?language=.NET)
 
 
 ## Security Notes
