@@ -23,3 +23,14 @@ Non-revocable. δεν μπορείς να ακυρώσεις ένα token πρι
 αν δεν έχει το secret key και προσπαθήσει να κάνει κάοια αλλαγή θα σκασει το signature
 αν καταφέρει να πάρει ένα valid jwt τότε μπορεί να έχει την ίδια ακριβώς πρόσβαση με τον χρήστη. good practice solution το secure transmission (TLS) και το short-expiration. υπάρχουν και τεχνικές όπως το token binding και το wrap σε HTTPOnly Cookie μεταξύ άλλων, για πιο ευαίσθητες εφαρμογές
 το short expiration σημαίνει ότι ο χρήστης θα πρέπει να λάβει νέο jwt για να συνεχίσει. είτε κάνει ξανά log in είτε εφαρμόζεται silent token renewal
+
+## demo info
+
+### project
+ASP.NET 6
+
+### how to run
+με Postman σε localhost χτυπάμε το login για να πάρουμε το JWT.
+βαζουμε το JWT σε BearerToken στο Auth του Postman Request.
+για να περάσω ορίσματα στο body raw JSON που να ταιριάζει με το DTO που περιμένει το endpoint.
+στον UserController υπάρχουν διαφορα authorized actions.
